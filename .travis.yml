@@ -1,8 +1,11 @@
-language: java
+language: shell
+os: windows
 version: ~> 1.0
 jdk:
   - oraclejdk8
   - openjdk8
+
+
 before_script:
   - script: echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, is commencing run." > travis.log;
 
