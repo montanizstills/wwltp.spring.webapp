@@ -32,8 +32,3 @@ CMD[]
 ##
 RUN["/bin/sh","travis logs > travis.logs"]
 
-##
-#Docker build script to run on PR, need to trigger #automatic builds on PR
-##
-
-docker run -v <local_dir>
