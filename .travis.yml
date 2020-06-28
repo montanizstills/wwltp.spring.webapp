@@ -1,16 +1,27 @@
-language: shell
-os: windows
+language: java
+#os: windows
 version: ~> 1.0
-jdk:
-  - oraclejdk8
-  - openjdk8
 
+services:
+  - docker
+
+env:
+    -DOCKER_USERNAME=
+    -DOCKER_PASSWORD=
+    -APP_CONTAINER=
+    -DB_CONTAINER=
 before_script:
-  - script: echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, is commencing run." > travis.log;
+  - echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, is commencing run." > logs/travis.log
+#  - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+
+script:
+  - docker volume create travis-logs
+  - docker build --no-cache --pull - < Dockerfile
+  - docker run --rm -v ${PWD}\logs:/ <image_name:latest> && docker logs -f ${APP_CONTAINER} >> logs/docker.log
 
 after_faliure:
-  - script: { echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has failed." > travis.log;
+  - script: { echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has failed." >> travis.log
               travis logs > travis.log }
 
 after_script:
-  script: echo The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has finshed running. > travis.log;
+  - echo The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has finshed running. >> travis.log
