@@ -6,10 +6,10 @@ services:
   - docker
 
 env:
-    -DOCKER_USERNAME=
-    -DOCKER_PASSWORD=
-    -APP_CONTAINER=
-    -DB_CONTAINER=
+    -DOCKER_USERNAME=my_username
+    -DOCKER_PASSWORD=my_password
+    -APP_CONTAINER=""
+    -DB_CONTAINER=""
 before_script:
   - echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, is commencing run." > logs/travis.log
 #  - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
