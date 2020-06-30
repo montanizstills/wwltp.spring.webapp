@@ -17,7 +17,7 @@ before_script:
 script:
 #  - docker build --no-cache -f Dockerfile .
   - docker run --rm -it --name linux -v ${PWD}:/root -w /root maven:3-jdk-11 mvn clean install && docker logs -f linux >> logs/docker.log
-  - docker exec travis logs >> logs/travis.log
+#  - docker exec travis logs >> logs/travis.log
 
 after_faliure:
   - script: { echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has failed." >> travis.log
