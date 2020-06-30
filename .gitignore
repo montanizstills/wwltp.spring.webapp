@@ -39,6 +39,8 @@
 
 #Cache
 .m2
+.bash_history
+.idea
 
 # CMake
 cmake-build-*/
