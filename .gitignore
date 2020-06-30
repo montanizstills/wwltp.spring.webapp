@@ -37,6 +37,9 @@
 # .idea/*.iml
 # .idea/modules
 
+#Cache
+.m2
+
 # CMake
 cmake-build-*/
 
