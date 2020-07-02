@@ -85,13 +85,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-<!--            <plugin>-->
-<!--                <artifactId>maven-surefire-plugin</artifactId>-->
-<!--                <version>2.21.0</version>-->
-<!--                <goals>-->
-<!--                    <goal>test</goal>-->
-<!--                </goals>-->
-<!--            </plugin>-->
         </plugins>
     </build>
 

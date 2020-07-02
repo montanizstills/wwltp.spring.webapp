@@ -41,6 +41,7 @@
 .m2
 .bash_history
 .idea
+.idea*
 
 # CMake
 cmake-build-*/
