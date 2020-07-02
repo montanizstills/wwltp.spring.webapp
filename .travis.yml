@@ -8,12 +8,13 @@ services:
 env:
 
 before_install:
+  - echo "${TRAVIS_BUILD_DIR}"
   - echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, PR number ${TRAVIS_PULL_REQUEST}, build id':'${TRAVIS_BUILD_NUMBER} is commencing run." > buildlogs/travis.log
 #  - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
 
-script:
+install:
 #  - docker build --no-cache -f Dockerfile .
-#  - docker run --rm -it --name linux -v ${PWD}:/root -w /root maven:3-jdk-11 mvn clean install && docker logs -f linux >> buildlogs/docker.log
+#  - docker run --rm -it --name linux -v ${PWD}:/root -w /root maven:3-jdk-11 mvn clean install -DSkipTest=false && docker logs -f linux >> buildlogs/docker.log
 #  - docker exec -- run some docker command.
 
 after_failure:
