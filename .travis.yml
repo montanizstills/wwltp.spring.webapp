@@ -3,7 +3,7 @@ language: java
 version: ~> 1.0
 
 services:
-#  - docker
+  - docker
 
 env:
 
@@ -12,13 +12,9 @@ before_install:
 #  - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
 
 install:
-#  - docker build --no-cache -f Dockerfile .
-  - docker run --rm -it --name webapp_container -v ${PWD}:/root -v ${TRAVIS_BUILD_DIR}:/root -w /root maven:3-jdk-11 mvn clean install -DSkipTest=false && docker logs -f webapp_container >> buildlogs/docker.log
-#  - docker exec -- run some docker command.
-
-after_failure:
-  - echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has failed." >> buildlogs/travis.log
-  - travis logs > travis.log
-
-after_script:
+  #  - docker build --no-cache -f Dockerfile .
+  - docker run --rm --name webapp_container -v ${PWD}:/root -v ${TRAVIS_BUILD_DIR}:/root -w /root maven:3-jdk-11 mvn clean test && docker logs -f webapp_container >> buildlogs/docker.log
   - echo The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has finshed running. >> buildlogs/travis.log
+#  - if [[ ${TRAVIS_TEST_RESULT}==1 ]] then docker exec echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has failed." >> buildlogs/travis.log; fi
+
+#script:

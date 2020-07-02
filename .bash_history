@@ -13,3 +13,5 @@ clear
 exit
 exit
 exit
+ls
+exit
