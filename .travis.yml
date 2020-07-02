@@ -8,7 +8,7 @@ services:
 env:
 
 before_install:
-  - echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, PR number ${TRAVIS_PULL_REQUEST}, build id':'${TRAVIS_BUILD_NUMBER} is commencing run." > buildlogs/travis.log
+#  - echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, PR number ${TRAVIS_PULL_REQUEST}, build id':'${TRAVIS_BUILD_NUMBER} is commencing run." > buildlogs/travis.log
 #  - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
 
 install:
