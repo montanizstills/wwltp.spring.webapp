@@ -20,8 +20,8 @@ script:
 #  - docker exec travis logs >> logs/travis.log
 
 after_faliure:
-  - script: { echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has failed." >> travis.log
-              travis logs > travis.log }
+  - echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has failed." >> travis.log
+  - travis logs > travis.log
 
 after_script:
   - echo The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has finshed running. >> travis.log
