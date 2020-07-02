@@ -38,7 +38,7 @@
 # .idea/modules
 
 #Cache
-.m2
+*/.m2
 .bash_history
 .idea
 .idea*
