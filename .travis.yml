@@ -13,8 +13,9 @@ before_install:
 
 install:
   #  - docker build --no-cache -f Dockerfile .
-  - docker run --name webapp_container -v ${PWD}:/root -v ${TRAVIS_BUILD_DIR}:/root -w /root maven:3-jdk-11 mvn clean test && docker logs -f webapp_container >> buildlogs/docker.log
-  - echo The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has finshed running. >> buildlogs/travis.log
+  - docker run --rm --name webapp_container -v ${PWD}:/root -v ${TRAVIS_BUILD_DIR}:/root -w /root maven:3-jdk-11 mvn clean test
+#  - && docker logs -f webapp_container >> buildlogs/docker.log
+#  - echo The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has finshed running. >> buildlogs/travis.log
 #  - if [[ ${TRAVIS_TEST_RESULT}==1 ]] then docker exec echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has failed." >> buildlogs/travis.log; fi
 
 #script:
