@@ -6,22 +6,19 @@ services:
 #  - docker
 
 env:
-#    -DOCKER_USERNAME=my_username
-#    -DOCKER_PASSWORD=my_password
-#    -APP_CONTAINER=""
-#    -DB_CONTAINER=""
-before_script:
-  - echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, PR number ${TRAVIS_PULL_REQUEST}, build id':'${TRAVIS_BUILD_NUMBER} is commencing run." > ./logs/travis.log
+
+before_install:
+  - echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, PR number ${TRAVIS_PULL_REQUEST}, build id':'${TRAVIS_BUILD_NUMBER} is commencing run." > buildlogs/travis.log
 #  - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
 
 script:
 #  - docker build --no-cache -f Dockerfile .
-  - docker run --rm -it --name linux -v ${PWD}:/root -w /root maven:3-jdk-11 mvn clean install && docker logs -f linux >> ./logs/docker.log
-#  - docker exec travis logs >> logs/travis.log
+#  - docker run --rm -it --name linux -v ${PWD}:/root -w /root maven:3-jdk-11 mvn clean install && docker logs -f linux >> buildlogs/docker.log
+#  - docker exec -- run some docker command.
 
 after_failure:
-  - echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has failed." >> ./logs/travis.log
+  - echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has failed." >> buildlogs/travis.log
   - travis logs > travis.log
 
 after_script:
-  - echo The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has finshed running. >> ./logs/travis.log
+  - echo The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has finshed running. >> buildlogs/travis.log
