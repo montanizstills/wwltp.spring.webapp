@@ -3,7 +3,7 @@ language: java
 version: ~> 1.0
 
 services:
-  - docker
+#  - docker
 
 env:
 #    -DOCKER_USERNAME=my_username
@@ -11,8 +11,7 @@ env:
 #    -APP_CONTAINER=""
 #    -DB_CONTAINER=""
 before_script:
-  - echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, is commencing run."
-#  - > ./logs/travis.log
+  - echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, PR number ${TRAVIS_PULL_REQUEST}, build id':'${TRAVIS_BUILD_NUMBER} is commencing run." > ./logs/travis.log
 #  - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
 
 script:
