@@ -40,8 +40,10 @@
 #Cache
 */.m2
 .bash_history
+*.idea
 .idea
 .idea*
+target
 
 # CMake
 cmake-build-*/
