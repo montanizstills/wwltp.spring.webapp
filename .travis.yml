@@ -13,10 +13,9 @@ before_install:
 
 install:
   #  - docker build --no-cache -f Dockerfile .
-
-  - echo "/root, A working directory who shares its path with the container's, named webapp_container, host's ./src/ ."
-  - echo "Maven will now cleanly compile and test the project."
-  - docker run --rm --name webapp_container -v ${PWD}:/root  -w /root maven:3-jdk-11 mvn clean test
+  - echo "Maven will now cleanly compile and test the project"
+#    ..inside /root, a working directory in, webapp_container (a linux); who shares its path with ./src/, the container's current directory.
+#  - docker run --rm --name webapp_container -v ${PWD}:/root  -w /root maven:3-jdk-11 mvn clean test
 #  - mount <dir>  to access Travis (.yml file) build's docker's image.
 #  - -v ${TRAVIS_BUILD_DIR}:/root
 # - $(TRAVIS_BUILD_DIR}:/root
