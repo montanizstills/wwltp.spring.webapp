@@ -37,11 +37,22 @@
 # .idea/*.iml
 # .idea/modules
 
+#Cache
+*/.m2
+.bash_history
+*.idea
+.idea
+.idea*
+target
+
 # CMake
 cmake-build-*/
 
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
+
+#Source specific Intelli-J configurations
+~.idea
 
 # File-based project format
 *.iws

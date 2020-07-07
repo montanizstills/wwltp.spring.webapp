@@ -1,14 +1,32 @@
 language: java
+#os: windows
 version: ~> 1.0
-jdk:
-  - oraclejdk8
-  - openjdk8
-before_script:
-  - script: echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, is commencing run." > travis.log;
 
-after_faliure:
-  - script: { echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has failed." > travis.log;
-              travis logs > travis.log }
+#services:
+#  - docker
 
-after_script:
-  script: echo The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has finshed running. > travis.log;
+#env:
+
+before_install:
+  - echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, PR number ${TRAVIS_PULL_REQUEST}, build id':'${TRAVIS_BUILD_NUMBER} is commencing run."
+#  > buildlogs/travis.log
+  - echo "Maven will now cleanly compile and test the project \n\n\n\n\n"
+#  - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+
+install:
+#  - docker build --no-cache -f Dockerfile .
+#    ..inside /root, a working directory in, webapp_container (a linux docker container); who shares its path with ./src/, the container's current directory.
+#  - docker run --rm --name webapp_container -v ${PWD}:/root  -w /root maven:3-jdk-11 mvn clean install
+#  - mount <dir>  to access Travis (.yml file) build's docker's image.
+#  - -v ${TRAVIS_BUILD_DIR}:/root
+# - $(TRAVIS_BUILD_DIR}:/root
+#  - pipe travis log > to src/logfiles/.travislogs
+#- -
+#  - probably getting permission denied because of
+#  - ensure that travis docker image intelli-j files are also ignored. The mount causes them to be pushed with src/ files.
+
+#  - && docker logs -f webapp_container >> buildlogs/docker.log
+#  - echo The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has finshed running. >> buildlogs/travis.log
+#  - if [[ ${TRAVIS_TEST_RESULT}==1 ]] then docker exec echo "The build on ${TRAVIS_PULL_REQUEST_BRANCH}, number ${TRAVIS_PULL_REQUEST}, has failed." >> buildlogs/travis.log; fi
+
+#script:
