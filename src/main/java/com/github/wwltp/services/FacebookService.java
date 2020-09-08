@@ -1,18 +1,31 @@
 package com.github.wwltp.services;
 
+import com.github.wwltp.models.User;
+import com.github.wwltp.repositories.FacebookRepository;
+import com.github.wwltp.utils.interfaces.services.ServiceInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FacebookService {
+public class FacebookService implements ServiceInterface<
+        Long,
+        User,
+        FacebookRepository> {
 
-    public FacebookService() {
+    private final FacebookRepository facebookRepository;
+
+    @Autowired
+    public FacebookService(FacebookRepository facebookRepository) {
+        this.facebookRepository = facebookRepository;
     }
 
-    public String hitFacebookEndpoint() {
-        Auth0ManagementAPIService auth0ManagementAPIService = new Auth0ManagementAPIService();
-        auth0ManagementAPIService.getManagementAPIAccessToken();
-        String userProfile = auth0ManagementAPIService.getUsersEndpoint();
-        return userProfile;
+    @Override
+    public FacebookRepository getRepository() {
+        return this.facebookRepository;
     }
 
+    @Override
+    public User update(User entity) {
+        return getRepository().save(entity);
+    }
 }
