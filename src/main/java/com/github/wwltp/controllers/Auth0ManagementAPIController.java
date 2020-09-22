@@ -22,8 +22,9 @@ public class Auth0ManagementAPIController {
     }
 
     @GetMapping(value = "/auth0Identity")
-    public ResponseEntity<String> responseEntity() {
-        return new ResponseEntity(auth0ManagementAPIService.getUserProfile(), HttpStatus.OK);
+    public ResponseEntity<String> auth0Identity() {
+        return new ResponseEntity<>(auth0ManagementAPIService.getUserProfile(), HttpStatus.OK);
     }
+
 
 }
